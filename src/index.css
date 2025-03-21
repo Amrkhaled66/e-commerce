@@ -9,13 +9,13 @@
 
   /* colors */
   --color-main-color: #8cbb26;
-  --color-main-color-700: #6D921E;
+  --color-main-color-700: #6d921e;
   --color-stroke: #d7d7d7;
   --color-mainSectionColor: #f5f8fb;
   --color-glassy-color: #e0e0e080;
+  --color-subtitle: #616161;
 
-
-  --section-padding:60px;
+  --section-padding: 60px;
 }
 
 /* HTML: <div class="inverted-radius"></div> */
@@ -43,6 +43,32 @@
   mask-repeat: no-repeat;
 }
 
+.inner-curve {
+  --r: 50px; /* Reduce the roundness to make it shorter */
+  --s: 60px; /* Increase the cut size to spread more horizontally */
+  --a: 20deg; /* Reduce depth to make it less tall */
+  --p: 50%; /* Keep it centered */
+
+  aspect-ratio: 5/1; /* Increase width-to-height ratio */
+  --_m: var(--r), #000 calc(100% - 1px), #0000;
+  --_d: (var(--s) + var(--r)) * cos(var(--a));
+
+  mask: radial-gradient(var(--r) at calc(var(--p) + var(--_d)) var(--_m)),
+    radial-gradient(var(--r) at calc(var(--p) - var(--_d)) var(--_m)),
+    radial-gradient(
+        var(--s) at var(--p) calc(-1 * sin(var(--a)) * var(--s)),
+        #0000 100%,
+        #000 calc(100% + 1px)
+      )
+      0 calc(var(--r) * (1 - sin(var(--a)))) no-repeat,
+    linear-gradient(
+      90deg,
+      #000 calc(var(--p) - var(--_d)),
+      #0000 0 calc(var(--p) + var(--_d)),
+      #000 0
+    );
+}
+
 .container {
   width: 100%;
   @media (width >= 40rem /* 640px */) {
@@ -63,19 +89,18 @@
   }
 }
 
-
-
 /* HTML: <div class="star"></div> */
 .star {
   width: 18px;
   aspect-ratio: 1;
-  background: #FACC15;
-  clip-path: polygon(50% 0,
-    calc(50%*(1 + sin(.4turn))) calc(50%*(1 - cos(.4turn))),
-    calc(50%*(1 - sin(.2turn))) calc(50%*(1 - cos(.2turn))),
-    calc(50%*(1 + sin(.2turn))) calc(50%*(1 - cos(.2turn))),
-    calc(50%*(1 - sin(.4turn))) calc(50%*(1 - cos(.4turn))) 
-   ); 
+  background: #facc15;
+  clip-path: polygon(
+    50% 0,
+    calc(50% * (1 + sin(0.4turn))) calc(50% * (1 - cos(0.4turn))),
+    calc(50% * (1 - sin(0.2turn))) calc(50% * (1 - cos(0.2turn))),
+    calc(50% * (1 + sin(0.2turn))) calc(50% * (1 - cos(0.2turn))),
+    calc(50% * (1 - sin(0.4turn))) calc(50% * (1 - cos(0.4turn)))
+  );
   /* or more simple
   clip-path: polygon(50% 0,79% 90%,2% 35%,98% 35%,21% 90%); 
    */

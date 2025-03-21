@@ -1,6 +1,6 @@
-import MainSlider from "../components/HeroSection/MainSlider/Index";
-import PromoCards from "../components/HeroSection/PromoCards";
-import CategorySlider from "../components/HeroSection/CategorySlider/index";
+import MainSlider from "src/components/HeroSection/MainSlider/Index";
+import PromoCards from "src/components/HeroSection/PromoCards";
+import CategorySlider from "src/components/HeroSection/CategorySlider/index";
 
 export default function HeroSection() {
   return (
