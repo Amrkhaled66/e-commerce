@@ -19,30 +19,37 @@ const data = [
 
 const SliderElement = ({ title }) => {
   return (
-    <button className=" px-5 py-3 border border-stroke font-cairo rounded-[50px] font-[700]">
+    <button className="border-stroke font-cairo rounded-[50px] border px-5 py-3 text-sm lg:text-base font-[700] ">
       {title}
     </button>
   );
 };
 
 export default function OffersSlider() {
-    const swiperRef = useRef(null);
-
+  const swiperRef = useRef(null);
 
   return (
-    <div className=" w-full mx-auto !py-[24px] bg-mainSectionColor">
+    <div className="bg-mainSectionColor mx-auto w-full !py-[28px]">
       <Swiper
-        slidesPerView={9}
+        slidesPerView={2.5}
         loop
         modules={[Navigation]}
-        className="w-full relative    h-full"
+        className="relative h-full w-full"
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
+        }}
+        breakpoints={{
+          1024: {
+            slidesPerView: 9,
+          },
+          774: {
+            slidesPerView: 4.3,
+          }
         }}
       >
         {data.map((slide) => (
           <SwiperSlide>
-            <SliderElement title={slide.title}  />
+            <SliderElement title={slide.title} />
           </SwiperSlide>
         ))}
       </Swiper>

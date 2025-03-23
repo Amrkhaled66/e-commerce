@@ -1,13 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 
 import MainLayout from "./layout/MainLayout";
-import { HomePage } from "./pages";
+import { HomePage, ProductPage } from "./pages";
 
 export default function Paths() {
   return (
     <Routes>
-      <Route path="/"  element={<MainLayout />}>
+      <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
+        <Route path="product" element={<ProductPage />} />
       </Route>
     </Routes>
   );

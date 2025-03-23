@@ -11,4 +11,9 @@ export default defineConfig({
       components: "/src/components",
     },
   },
+
+  server: {
+    port: 3000
+  }
 });
+

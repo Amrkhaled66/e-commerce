@@ -1,59 +1,62 @@
-import { GrCart } from "react-icons/gr";
-import { AiOutlineHeart } from "react-icons/ai";
+import AddToCart from "src/components/ui/Buttons/AddToCart";
+import AddToFav from "src/components/ui/Buttons/AddToFav";
 
+import { Link } from "react-router-dom";
+
+import Stars from "../Stars";
 export default function ProductCard({
   img,
   title,
   sellingCount,
   price,
   discountedPrice,
-  starts,
+  stars,
   ProductImages,
+  isHorizontal,
 }) {
   return (
-    <div className="w-[224px] mx-auto h-[476px]  border border-stroke rounded-2xl  overflow-hidden    ">
-      <div className="  relative border-b border-stroke ">
-        <div className=" absolute top-3 right-4 bg-white rounded-xl border-stroke border px-2.5 py-2 text-2xl ">
-          <AiOutlineHeart />
+    <div
+      className={`border-stroke mx-auto h-fit overflow-hidden rounded-2xl border ${
+        isHorizontal ? "flex w-full" : "w-[85%]"
+      }`}
+    >
+      <Link to="product">
+        <div
+          className={`relative ${isHorizontal ? "border-l" : "border-b"} border-stroke`}
+        >
+          <AddToFav />
+          <img className="h-full w-full object-cover" src={img} alt={title} />
+          <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-x-2">
+            {Array.from({ length: ProductImages }).map((_, index) => (
+              <button
+                className={`${
+                  index === 0 ? "bg-black" : " "
+                } h-2 w-2 cursor-pointer rounded-full border border-black`}
+              ></button>
+            ))}
+          </div>
         </div>
-        <img className="w-full h-[290px] object-fit " src={img} alt={title} />
-        <div className=" gap-x-2 bottom-2 flex  left-1/2 -translate-x-1/2   absolute ">
-          {Array.from({ length: ProductImages }).map((_, index) => (
-            <button
-              className={`${
-                index === 0 ? " bg-black " : " "
-              } h-2 w-2 border cursor-pointer border-black rounded-full`}
-            ></button>
-          ))}
-        </div>
-      </div>
-      <div className="p-3 h-[186px]  flex flex-col justify-between  ">
-        <p className="font-[500] leading-relaxed">{title}</p>
-        <div className=" space-y-1">
-          <div className=" gap-x-3 flex">
-            <div className=" flex gap-[2px]">
-              {Array.from({ length: starts }).map((_, index) => (
-                <div className="star"></div>
-              ))}
+        <div className="flex h-auto flex-col justify-between gap-y-4 p-3">
+          <p className="leading-relaxed font-[500]">{title}</p>
+          <div className="space-y-1">
+            <div className="flex gap-x-3">
+              <Stars length={stars} />
+              <p className="font-inter text-sm">({sellingCount})</p>
             </div>
-            <p className="text-sm font-inter">({sellingCount})</p>
-          </div>
-          <div className="flex items-end gap-x-2">
-            <span className="font-bold">{price} جنية</span>
-            <span className=" line-through text-xs ">
-              {price - discountedPrice}
-            </span>
-            <span className=" text-main-color-700 tracking-widest text-sm ">
-              {(price - discountedPrice) / 100}%خصم
-            </span>
+            <div className="flex items-end gap-x-2">
+              <span className="font-bold">{price} جنية</span>
+              <span className="text-xs line-through">
+                {price - discountedPrice}
+              </span>
+              <span className="text-main-color-700 text-sm tracking-widest">
+                {(price - discountedPrice) / 100}%خصم
+              </span>
+            </div>
           </div>
         </div>
-        <button className="flex items-center hover:brightness-110 duration-300 transition-all rounded-2xl w-full cursor-pointer mx-auto py-2 px-4 justify-center gap-x-2  font-bold font-cairo bg-main-color text-white">
-          <span className="text-xl">
-            <GrCart />
-          </span>
-          اٍضافة اٍلي العربة
-        </button>
+      </Link>
+      <div className="w-full p-3">
+        <AddToCart />
       </div>
     </div>
   );

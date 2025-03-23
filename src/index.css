@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import "tailwindcss";
 
+/* || Tailwind theme */
 @theme {
   /* fonts */
   --font-cairo: "Cairo", sans-serif;
@@ -10,15 +11,33 @@
   /* colors */
   --color-main-color: #8cbb26;
   --color-main-color-700: #6d921e;
+  --color-main-color-100: #e0f0bd;
+  --color-main-color-fade: #9eb56b;
   --color-stroke: #d7d7d7;
   --color-mainSectionColor: #f5f8fb;
   --color-glassy-color: #e0e0e080;
   --color-subtitle: #616161;
 
   --section-padding: 60px;
+  --navbar-height-mobile: 60px;
+  --navbar-height: 160px;
 }
 
-/* HTML: <div class="inverted-radius"></div> */
+/* || reset */
+html {
+  overflow-x: hidden !important ;
+  height: auto;
+}
+body {
+  overflow: hidden !important ;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* || Classes */
 .inverted-radius {
   --r: 20px; /* the radius */
   --s: 30px; /* size of inner curve */
@@ -26,15 +45,16 @@
   --y: 10px; /* vertical offset (no percentage) */
 
   aspect-ratio: 1;
-  --_m: /calc(2 * var(--r)) calc(2 * var(--r)) radial-gradient(#000 70%, #0000
-        72%);
+  --_m: /calc(2 * var(--r)) calc(2 * var(--r))
+    radial-gradient(#000 70%, #0000 72%);
   --_g: conic-gradient(
     from 180deg at var(--r) calc(100% - var(--r)),
     #0000 25%,
     #000 0
   );
   --_d: (var(--s) + var(--r));
-  mask: calc(var(--_d) + var(--x)) 100% var(--_m),
+  mask:
+    calc(var(--_d) + var(--x)) 100% var(--_m),
     0 calc(100% - var(--_d) - var(--y)) var(--_m),
     radial-gradient(var(--s) at 0 100%, #0000 99%, #000 calc(100% + 1px))
       calc(var(--r) + var(--x)) calc(-1 * var(--r) - var(--y)),
@@ -53,7 +73,8 @@
   --_m: var(--r), #000 calc(100% - 1px), #0000;
   --_d: (var(--s) + var(--r)) * cos(var(--a));
 
-  mask: radial-gradient(var(--r) at calc(var(--p) + var(--_d)) var(--_m)),
+  mask:
+    radial-gradient(var(--r) at calc(var(--p) + var(--_d)) var(--_m)),
     radial-gradient(var(--r) at calc(var(--p) - var(--_d)) var(--_m)),
     radial-gradient(
         var(--s) at var(--p) calc(-1 * sin(var(--a)) * var(--s)),
@@ -70,26 +91,29 @@
 }
 
 .container {
-  width: 100%;
+  width: 90%;
+  padding: 0 5px !important;
+  margin: auto;
   @media (width >= 40rem /* 640px */) {
     max-width: 40rem /* 640px */;
   }
   @media (width >= 48rem /* 768px */) {
     max-width: 48rem /* 768px */;
+    padding-top: 60;
   }
   @media (width >= 64rem /* 1024px */) {
-    max-width: 64rem /* 1024px */;
+    max-width: 70rem /* 1024px */;
   }
   @media (width >= 80rem /* 1280px */) {
-    max-width: 80rem /* 1280px */;
+    max-width: 90rem /* 1280px */;
     padding: 0 60px !important ;
+    width: 100%;
   }
   @media (width >= 96rem /* 1536px */) {
     max-width: 96rem /* 1536px */;
   }
 }
 
-/* HTML: <div class="star"></div> */
 .star {
   width: 18px;
   aspect-ratio: 1;

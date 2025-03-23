@@ -1,15 +1,17 @@
-import MainSlider from "src/components/HeroSection/MainSlider/Index";
-import PromoCards from "src/components/HeroSection/PromoCards";
-import CategorySlider from "src/components/HeroSection/CategorySlider/index";
+import MainSlider from "src/components/HomePage/HeroSection/MainSlider/Index";
+import PromoCards from "src/components/HomePage/HeroSection/PromoCards";
+import CategorySlider from "src/components/HomePage/HeroSection/CategorySlider/index";
 
 export default function HeroSection() {
   return (
-    <div className=" container flex gap-y-[24px] flex-col  mx-auto !py-(--section-padding) bg-mainSectionColor ">
-      <div className="w-full flex justify-between" >
-        <MainSlider />
-        <PromoCards />
+    <div className="bg-mainSectionColor">
+      <div className="container mx-auto flex flex-col gap-y-[24px] !pt-(--navbar-height-mobile) lg:!pt-(--navbar-height)">
+        <div className="flex w-full flex-col justify-between gap-x-6 gap-y-12 !py-(--section-padding) lg:flex-row">
+          <MainSlider />
+          <PromoCards />
+        </div>
+        <CategorySlider />
       </div>
-      <CategorySlider />
     </div>
   );
 }
