@@ -8,32 +8,7 @@ import SocialIcons from "src/components/ui/SocialIcons";
 
 import { Icon } from "@iconify/react/dist/iconify.js";
 
-const QuantitySelector = ({ quantity, setQuantity }) => {
-  return (
-    <div className="space-y-3">
-      <p className="font-bold">الكمية </p>
-
-      <div className="flex w-fit items-center gap-2 rounded-2xl border border-gray-300 px-3">
-        <button
-          className="cursor-pointer text-black disabled:opacity-50"
-          onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-          disabled={quantity <= 1}
-        >
-          <IoIosRemove size={20} />
-        </button>
-        <span className="h-full bg-[#F4F4F4] px-4 py-2 text-lg font-semibold">
-          {quantity}
-        </span>
-        <button
-          className="cursor-pointer text-black disabled:opacity-50"
-          onClick={() => setQuantity((prev) => prev + 1)}
-        >
-          <IoIosAdd size={20} />
-        </button>
-      </div>
-    </div>
-  );
-};
+import QuantitySelector from "src/components/ui/QuantitySelector";
 
 function PaymentMethods() {
   return (
@@ -121,7 +96,7 @@ export default function CtaSection({ product }) {
       </div>
 
       {/* CtA */}
-      <div className="border-stroke flex flex-col gap-y-5 rounded-2xl bg-white lg:px-5 lg:py-3 lg:border">
+      <div className="border-stroke flex flex-col gap-y-5 rounded-2xl bg-white lg:border lg:px-5 lg:py-3">
         <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
         <div className="space-y-6">
           <div className="w-full space-y-3">

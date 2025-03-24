@@ -19,6 +19,7 @@ const NavLinks = () => {
         <NavLink
           icon={<GrCart className="h-[18px] w-[18px]" />}
           title="عربة التسوق (3)"
+          to="/cart"
         />
       </ul>
       <div className="relative block lg:hidden">

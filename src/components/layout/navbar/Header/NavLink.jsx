@@ -1,12 +1,15 @@
-import React from 'react';
+import React from "react";
 
-const NavLink = ({ title, icon }) => {
+import { Link } from "react-router-dom";
+const NavLink = ({ title, icon, to }) => {
   return (
-    <li className="flex cursor-pointer items-center gap-x-2">
-      <span>{icon}</span>
-      {title}
-    </li>
+    <Link to={to}>
+      <li className="flex cursor-pointer items-center gap-x-2">
+        <span>{icon}</span>
+        {title}
+      </li>
+    </Link>
   );
 };
 
-export default NavLink; 
+export default NavLink;
