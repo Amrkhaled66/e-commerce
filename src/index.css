@@ -19,7 +19,8 @@
   --color-subtitle: #616161;
 
   --section-padding: 60px;
-  --navbar-height-mobile: 60px;
+  --section-padding-mobile: 28px;
+  --navbar-height-mobile: 80px;
   --navbar-height: 160px;
 }
 
@@ -64,7 +65,7 @@ button {
 }
 
 .inner-curve {
-  --r: 50px; /* Reduce the roundness to make it shorter */
+  --r: 5px; /* Reduce the roundness to make it shorter */
   --s: 60px; /* Increase the cut size to spread more horizontally */
   --a: 20deg; /* Reduce depth to make it less tall */
   --p: 50%; /* Keep it centered */
@@ -91,7 +92,7 @@ button {
 }
 
 .container {
-  width: 90%;
+  width: 95%;
   padding: 0 5px !important;
   margin: auto;
   @media (width >= 40rem /* 640px */) {
@@ -99,7 +100,7 @@ button {
   }
   @media (width >= 48rem /* 768px */) {
     max-width: 48rem /* 768px */;
-    padding-top: 60;
+    /* padding-top: 60; */
   }
   @media (width >= 64rem /* 1024px */) {
     max-width: 70rem /* 1024px */;
@@ -129,3 +130,5 @@ button {
   clip-path: polygon(50% 0,79% 90%,2% 35%,98% 35%,21% 90%); 
    */
 }
+
+

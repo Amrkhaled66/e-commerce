@@ -26,7 +26,7 @@ export default function CategorySlider({ carouselData, slidesPerGroup }) {
   };
 
   return (
-    <div key={carouselData} className="group relative h-fit w-full">
+    <div key={carouselData} className="group relative flex h-fit w-full">
       <Swiper
         slidesPerView={slidesPerGroup}
         loop
@@ -36,16 +36,17 @@ export default function CategorySlider({ carouselData, slidesPerGroup }) {
         }}
         onSlideChange={handleSlideChange}
         breakpoints={{
-          320: { slidesPerView: 1.5, slidesPerGroup: 1 },
-          744: { slidesPerView: 3, slidesPerGroup: 3 },
+          320: { slidesPerView: 1.5, slidesPerGroup: 1, spaceBetween: 24 },
+          744: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 24 },
           1024: {
             slidesPerView: slidesPerGroup,
             slidesPerGroup: slidesPerGroup,
+            spaceBetween: 24,
           },
         }}
       >
         {carouselData.map((slide, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide className=" " key={index}>
             <ProductCard {...slide} />
           </SwiperSlide>
         ))}

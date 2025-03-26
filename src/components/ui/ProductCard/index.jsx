@@ -18,10 +18,10 @@ export default function ProductCard({
   return (
     <div
       className={`border-stroke mx-auto h-fit overflow-hidden rounded-2xl border ${
-        isHorizontal ? "flex w-full" : "w-[85%]"
+        isHorizontal ? "flex w-full" : "w-[100%]"
       }`}
     >
-      <Link to="product" className={`${isHorizontal ? "flex" : ""}`}>
+      <Link to="/product" className={`${isHorizontal ? "flex" : ""}`}>
         <div
           className={`relative ${
             isHorizontal ? "border-l" : "border-b"

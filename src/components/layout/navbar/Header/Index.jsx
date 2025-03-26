@@ -16,7 +16,7 @@ export default function Index() {
   };
 
   return (
-    <div className="font-cairo border-stroke container mx-auto flex h-[100px] items-center justify-between gap-x-14 border-b">
+    <div className="font-cairo border-stroke container mx-auto flex h-[80px] lg:h-[100px] items-center justify-between gap-x-14 border-b">
       <Link to="/" className="order-2 flex items-center gap-x-2 lg:order-none">
         <img src={Logo} alt="" />
         <h1 className="text-[20px] font-[700]">التسوق</h1>

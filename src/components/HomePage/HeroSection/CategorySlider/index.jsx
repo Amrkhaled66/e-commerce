@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import SliderArrows from "src/components/ui/SliderArrows";
-import Element from "./Element";
+import CategoryElement from "src/components/ui/CategoryElement";
 
 import data from "./data";
 
@@ -35,7 +35,7 @@ export default function CustomSlider() {
       >
         {data.map((slide) => (
           <SwiperSlide>
-            <Element title={slide.title} img={slide.img} />
+            <CategoryElement title={slide.title} img={slide.img} />
           </SwiperSlide>
         ))}
       </Swiper>

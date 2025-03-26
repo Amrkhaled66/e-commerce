@@ -1,8 +1,8 @@
 import React from 'react';
-import DiscountInput from 'src/components/cartPage/cartsummary/DiscountInput';
-import PriceDetails from 'src/components/cartPage/cartsummary/PriceDetails';
-import TotalPrice from 'src/components/cartPage/cartsummary/TotalPrice';
-import CartButtons from 'src/components/cartPage/cartsummary/CartButtons';
+import DiscountInput from 'src/components/CartPage/CartSummary/DiscountInput';
+import PriceDetails from 'src/components/CartPage/CartSummary/PriceDetails';
+import TotalPrice from 'src/components/CartPage/CartSummary/TotalPrice';
+import CartButtons from 'src/components/CartPage/CartSummary/CartButtons';
 
 const CartSummary = ({ quantity, cartTotal }) => {
   return (

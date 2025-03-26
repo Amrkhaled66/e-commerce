@@ -29,6 +29,7 @@ export default function MobileMenu({ isOpen }) {
     >
       <Item to="/" icon={CiHome} title="الرئيسية" />
       <Item to="/search" icon={IoSearchOutline} title="البحث" />
+      <Item to="/productList" icon={HiOutlineSquares2X2} title="الفئات" />
       <Item to="/profile" icon={LuUserRound} title="الحساب" />
     </div>
   );

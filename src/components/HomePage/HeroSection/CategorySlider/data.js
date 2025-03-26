@@ -68,6 +68,14 @@ const data = [
     title: "الخضروات",
     img: vega,
   },
+  {
+    title: "الخضروات",
+    img: vega,
+  },
+  {
+    title: "الخضروات",
+    img: vega,
+  },
 ];
 
 export default data;
