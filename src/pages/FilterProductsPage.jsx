@@ -1,84 +1,52 @@
 import { useState } from "react";
-import ProductCard from "src/components/ui/ProductCard";
 import FilterSideBar from "src/components/FilterProductPage/FilterSideBar";
-
-import { products } from "src/components/FilterProductPage/data";
-
+import ProductList from "src/components/FilterProductPage/ProductList";
+import useProductFilter from "src/hooks/useProductFilter";
 import { Icon } from "@iconify/react/dist/iconify.js";
-
-const itemsPerPage = 12;
+import { FaFilter, FaArrowLeftLong } from "react-icons/fa6";
 
 export default function ProductFilterPage() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [filters, setFilters] = useState({
-    brands: [],
-    priceRange: { min: 0, max: 2000 },
-    ratings: [],
-    sizes: [],
-    colors: [],
-    productStates: [],
-  });
+  const {
+    currentPage,
+    setCurrentPage,
+    filters,
+    setFilters,
+    filteredProducts,
+    totalPages,
+    paginatedProducts,
+    handleFilterChange,
+  } = useProductFilter();
 
-  const filteredProducts = products.filter((product) => {
-    if (filters.brands.length > 0 && !filters.brands.includes(product.brand)) {
-      return false;
+  const [filterState, setFilterState] = useState(false);
+
+  // Pagination Logic
+  const getVisiblePages = () => {
+    if (totalPages <= 6)
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+
+    if (currentPage <= 5) {
+      return [1, 2, 3, 4, 5, "...", totalPages];
+    } else if (currentPage >= totalPages - 4) {
+      return [
+        1,
+        "...",
+        totalPages - 4,
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages,
+      ];
+    } else {
+      return [1, "...", currentPage, currentPage + 1, "...", totalPages];
     }
+  };
 
-    if (
-      product.price < filters.priceRange.min ||
-      product.price > filters.priceRange.max
-    ) {
-      return false;
+  const handleEllipsisClick = (type) => {
+    if (type === "back") {
+      setCurrentPage((prev) => Math.max(1, prev - 2));
+    } else {
+      setCurrentPage((prev) => Math.min(totalPages, prev + 2));
     }
-
-    if (
-      filters.ratings.length > 0 &&
-      !filters.ratings.some(
-        (r) => product.starts >= r && product.starts < r + 0.5,
-      )
-    ) {
-      return false;
-    }
-
-    if (filters.sizes.length > 0 && !filters.sizes.includes(product.size)) {
-      return false;
-    }
-
-    if (filters.colors.length > 0 && !filters.colors.includes(product.color)) {
-      return false;
-    }
-
-    if (
-      filters.productStates.length > 0 &&
-      !filters.productStates.includes(product.productState)
-    ) {
-      return false;
-    }
-
-    return true;
-  });
-
-  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-
-  const paginatedProducts = filteredProducts.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage,
-  );
-
-  const handleFilterChange = (filterType, value) => {
-    setFilters((prev) => {
-      if (filterType === "priceRange") {
-        return { ...prev, priceRange: value };
-      }
-
-      return {
-        ...prev,
-        [filterType]: prev[filterType].includes(value)
-          ? prev[filterType].filter((item) => item !== value)
-          : [...prev[filterType], value],
-      };
-    });
-    setCurrentPage(1);
   };
 
   return (
@@ -86,6 +54,8 @@ export default function ProductFilterPage() {
       <div className="container mx-auto flex flex-col gap-y-6 !pt-(--section-padding-mobile) lg:!py-(--section-padding)">
         <div className="flex min-h-screen justify-between gap-x-6">
           <FilterSideBar
+            setFilterState={setFilterState}
+            filterState={filterState}
             filters={filters}
             onFilterChange={handleFilterChange}
           />
@@ -107,66 +77,90 @@ export default function ProductFilterPage() {
             </div>
 
             {filteredProducts.length === 0 ? (
-              <p>لا توجد منتجات مطابقة للبحث</p>
+              <p className="text-center">لا توجد منتجات مطابقة للبحث</p>
             ) : (
-              <>
-                <div
-                  key={paginatedProducts}
-                  className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
-                >
-                  {paginatedProducts.map((product) => (
-                    <ProductCard
-                      key={product.id}
-                      img={product.img}
-                      title={product.title}
-                      starts={product.starts}
-                      sellingCount={product.sellingCount}
-                      price={product.price}
-                      discountedPrice={product.discountedPrice}
-                      ProductImages={product.ProductImages}
-                    />
-                  ))}
-                </div>
+              <ProductList products={paginatedProducts} />
+            )}
 
-                {totalPages > 1 && (
-                  <div className="mt-6 flex justify-center space-x-2">
-                    <button
-                      className="rounded bg-gray-300 px-3 py-1"
-                      onClick={() =>
-                        setCurrentPage((prev) => Math.max(prev - 1, 1))
-                      }
-                      disabled={currentPage === 1}
-                    >
-                      السابق
-                    </button>
-                    {[...Array(totalPages)].map((_, index) => (
-                      <button
-                        key={index}
-                        className={`rounded px-3 py-1 ${
-                          currentPage === index + 1
-                            ? "bg-blue-500 text-white"
-                            : "bg-gray-200"
-                        }`}
-                        onClick={() => setCurrentPage(index + 1)}
-                      >
-                        {index + 1}
-                      </button>
-                    ))}
-                    <button
-                      className="rounded bg-gray-300 px-3 py-1"
-                      onClick={() =>
-                        setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                      }
-                      disabled={currentPage === totalPages}
-                    >
-                      التالي
-                    </button>
-                  </div>
-                )}
-              </>
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="mt-6 flex justify-center space-x-2">
+                {/* Left Arrow */}
+                <button
+                  className="border-stroke rounded-full border p-2.5"
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                  disabled={currentPage === 1}
+                >
+                  <FaArrowLeftLong
+                    className={currentPage === 1 ? "text-black/40" : ""}
+                    style={{ rotate: "180deg" }}
+                  />
+                </button>
+
+                {getVisiblePages().map((page, index) => (
+                  <button
+                    key={index}
+                    className={`border-stroke rounded-lg border px-2.5 py-2 ${
+                      currentPage === page ? "!border-main-color" : ""
+                    }`}
+                    onClick={() =>
+                      page === "..."
+                        ? handleEllipsisClick(index === 1 ? "back" : "forward")
+                        : setCurrentPage(page)
+                    }
+                  >
+                    {page}
+                  </button>
+                ))}
+
+                {/* Right Arrow */}
+                <button
+                  className="border-stroke rounded-full border p-2.5"
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                >
+                  <FaArrowLeftLong
+                    className={
+                      currentPage === totalPages ? "text-subtitle" : ""
+                    }
+                  />
+                </button>
+              </div>
             )}
           </div>
         </div>
+
+        {/* Mobile filter */}
+        <div className="bg-main-color fixed bottom-[85px] left-1/2 z-50 flex translate-x-[-50%] gap-x-2 rounded-[50px] px-6 py-2 text-white lg:hidden">
+          <button className="r-stroke flex items-center gap-x-2 pl-2 text-sm font-[500] text-nowrap outline-0">
+            ترتيب حسب
+            <Icon
+              icon="mage:filter"
+              width="24"
+              height="24"
+              style={{ color: "#fff" }}
+            />
+          </button>
+          <button
+            onClick={() => setFilterState(true)}
+            className="flex items-center gap-x-2 border-r border-white pr-2 text-sm font-[500]"
+          >
+            Filter
+            <FaFilter className="h-6 w-6" />
+          </button>
+        </div>
+
+        {/* Overlay */}
+        {filterState && (
+          <div
+            onClick={() => setFilterState(false)}
+            className="fixed top-0 right-0 z-[10000] h-screen w-screen bg-black opacity-50"
+          ></div>
+        )}
       </div>
     </div>
   );

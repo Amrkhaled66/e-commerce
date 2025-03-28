@@ -38,6 +38,10 @@ button {
   cursor: pointer;
 }
 
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
 /* || Classes */
 .inverted-radius {
   --r: 20px; /* the radius */
@@ -66,7 +70,7 @@ button {
 
 .inner-curve {
   --r: 5px; /* Reduce the roundness to make it shorter */
-  --s: 60px; /* Increase the cut size to spread more horizontally */
+  --s: 0px; /* Increase the cut size to spread more horizontally */
   --a: 20deg; /* Reduce depth to make it less tall */
   --p: 50%; /* Keep it centered */
 
@@ -131,4 +135,19 @@ button {
    */
 }
 
+.filter-sidebar::-webkit-scrollbar-button {
+  display: none;
+}
 
+.filter-sidebar::-webkit-scrollbar-thumb {
+  background-color: #c6c4c4;
+  border-radius: 20px;
+  -webkit-border-radius:;
+  -moz-border-radius:;
+  -ms-border-radius:;
+  -o-border-radius:;
+}
+
+.filter-sidebar::-webkit-scrollbar {
+  width: 8px;
+}

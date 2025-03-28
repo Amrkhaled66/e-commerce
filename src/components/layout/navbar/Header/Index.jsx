@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Index() {
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(true);
   const toggleMenu = () => {
     setShowMobileMenu((prev) => !prev);
   };
@@ -31,7 +31,9 @@ export default function Index() {
       </div>
 
       <div className="order-1 cursor-pointer lg:hidden">
-        <MdMenu onClick={toggleMenu} className="h-[32px] w-[32px]" />
+        <MdMenu
+          // onClick={toggleMenu}
+          className="h-[32px] w-[32px]" />
         <MobileMenu isOpen={showMobileMenu} />
       </div>
     </div>

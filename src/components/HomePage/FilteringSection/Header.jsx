@@ -1,7 +1,7 @@
 export default function Header() {
   return (
     <div className="relative">
-      <h4 className="bg-main-color border-white border-4 z-50 absolute -top-3 right-1/2  translate-x-1/2 rounded-full px-6 py-2.5 text-xl font-bold text-white">
+      <h4 className="bg-main-color  -translate-y-3 border-white border-4 z-50 absolute -top-3 right-1/2  translate-x-1/2 rounded-full px-6 py-2.5 text-xl font-bold text-white">
         منتجات
       </h4>
       <div
