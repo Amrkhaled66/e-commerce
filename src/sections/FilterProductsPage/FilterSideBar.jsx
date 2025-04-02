@@ -5,7 +5,7 @@ import { CiSearch } from "react-icons/ci";
 import { IoStar, IoStarHalf } from "react-icons/io5";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
-import FilterElement from "./FilterElement";
+import FilterElement from "src/components/FilterProductsPage/FilterElement";
 import {
   brands,
   size,
@@ -13,7 +13,7 @@ import {
   colors,
   productStates,
   categories,
-} from "./data";
+} from "src/components/FilterProductsPage/data";
 
 export default function FilterSideBar({
   filters,

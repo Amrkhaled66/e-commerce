@@ -131,7 +131,7 @@ const FilterElement = ({ isActive, title, onClick, id }) => {
       onClick={() => onClick(id)}
       className={`${
         isActive ? "bg-main-color text-white" : ""
-      } cursor-pointer px-4 text-sm border mx-auto duration-300 transition-all rounded-[50px] border-stroke font-[700] lg:text-xl py-3`}
+      } border-stroke cursor-pointer rounded-[50px] border px-4 py-3 text-sm font-[700] text-nowrap transition-all duration-300 lg:text-xl`}
     >
       {title}
     </button>
@@ -160,24 +160,21 @@ export default function Filters() {
   };
 
   return (
-    <div className="flex  flex-col items-center gap-y-15  w-full mx-auto font-cairo">
+    <div className="font-cairo mx-auto flex w-full flex-col items-center gap-y-15">
       <Swiper
-        loop
         modules={[Navigation]}
-        className="w-screen lg:w-[75%] flex items-center "
+        className=""
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         breakpoints={{
-          1200: { slidesPerView: 5 },
-          774:{ slidesPerView: 4.5 },
-          0: { slidesPerView: 2.4 },
+          1024: {
+            spaceBetween: 24,
+          },
+          744: { spaceBetween: 20 },
+          0: { slidesPerView: 3, spaceBetween: 16 },
         }}
-
       >
         {filtersData.map((item) => (
-          <SwiperSlide
-            key={item.id}
-            className="w-screen flex items-center justify-between"
-          >
+          <SwiperSlide key={item.id} className="!w-fit ">
             <FilterElement
               id={item.id}
               isActive={activeFilter === item.id}

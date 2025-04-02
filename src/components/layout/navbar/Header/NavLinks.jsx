@@ -4,6 +4,7 @@ import { LuUserRound } from "react-icons/lu";
 import { GrCart } from "react-icons/gr";
 import NavLink from "./NavLink";
 
+import { Link } from "react-router-dom";
 const NavLinks = () => {
   return (
     <nav>
@@ -23,10 +24,12 @@ const NavLinks = () => {
         />
       </ul>
       <div className="relative block lg:hidden">
-        <span className="absolute -top-3 -right-2 w-[12px] h-[12px] flex items-center justify-center rounded-full bg-[#D40101] p-3 font-[700] text-white">
-          0
-        </span>
-        <NavLink icon={<GrCart className="h-[32px] w-[32px]" />} />
+        <Link to="cart">
+          <span className="absolute -top-3 -right-2 flex h-[12px] w-[12px] items-center justify-center rounded-full bg-[#D40101] p-3 font-[700] text-white">
+            0
+          </span>
+          <NavLink icon={<GrCart className="h-[32px] w-[32px]" />} />
+        </Link>
       </div>
     </nav>
   );

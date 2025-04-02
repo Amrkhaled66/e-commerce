@@ -42,7 +42,7 @@ export default function OffersSlider() {
           1024: {
             slidesPerView: 9,
           },
-          774: {
+          744: {
             slidesPerView: 4.3,
           }
         }}

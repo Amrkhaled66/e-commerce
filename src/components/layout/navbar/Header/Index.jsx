@@ -9,14 +9,9 @@ import NavLinks from "./NavLinks";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Index() {
-  const [showMobileMenu, setShowMobileMenu] = useState(true);
-  const toggleMenu = () => {
-    setShowMobileMenu((prev) => !prev);
-  };
-
+export default function Index({ onToggleMenu }) {
   return (
-    <div className="font-cairo border-stroke container mx-auto flex h-[80px] lg:h-[100px] items-center justify-between gap-x-14 border-b">
+    <div className="font-cairo border-stroke container mx-auto flex h-[80px] items-center justify-between gap-x-14 border-b lg:h-[100px]">
       <Link to="/" className="order-2 flex items-center gap-x-2 lg:order-none">
         <img src={Logo} alt="" />
         <h1 className="text-[20px] font-[700]">التسوق</h1>
@@ -31,10 +26,8 @@ export default function Index() {
       </div>
 
       <div className="order-1 cursor-pointer lg:hidden">
-        <MdMenu
-          // onClick={toggleMenu}
-          className="h-[32px] w-[32px]" />
-        <MobileMenu isOpen={showMobileMenu} />
+        <MdMenu onClick={onToggleMenu} className="h-[32px] w-[32px]" />
+        <MobileMenu />
       </div>
     </div>
   );

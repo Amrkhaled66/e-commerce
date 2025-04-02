@@ -5,12 +5,14 @@ import CategorySlider from "src/components/HomePage/HeroSection/CategorySlider/i
 export default function HeroSection() {
   return (
     <div className="bg-mainSectionColor">
-      <div className="container mx-auto flex flex-col gap-y-[24px] !pt-(--navbar-height-mobile) lg:!pt-(--navbar-height)">
-        <div className="flex w-full flex-col justify-between gap-x-6 gap-y-12 !py-(--section-padding) lg:flex-row">
-          <MainSlider />
-          <PromoCards />
+      <div className="!pt-(--navbar-height-mobile) lg:!pt-(--navbar-height)">
+        <div className="container mx-auto flex flex-col gap-y-4 !py-(--section-padding-mobile) sm:gap-y-5 md:gap-y-6 md:!py-(--section-padding) lg:gap-y-[24px]">
+          <div className="flex w-full flex-col justify-between gap-x-6 gap-y-4 lg:flex-row">
+            <MainSlider />
+            <PromoCards />
+          </div>
+          <CategorySlider />
         </div>
-        <CategorySlider />
       </div>
     </div>
   );

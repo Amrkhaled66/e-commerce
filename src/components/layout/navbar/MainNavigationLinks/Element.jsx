@@ -1,10 +1,10 @@
-import { IoIosArrowDown } from "react-icons/io";
-
-export default function Element({ showArrow = true, title }) {
+export default function Element({ showArrow = true, title, Arrow, className }) {
   return (
-    <p className="font-cairo  cursor-pointer flex gap-x-2 items-center font-[700] ">
+    <p
+      className={`font-cairo flex cursor-pointer items-center justify-between gap-x-2 ${className} `}
+    >
       {title}
-      {showArrow && <IoIosArrowDown />}
+      {showArrow && Arrow}
     </p>
   );
 }

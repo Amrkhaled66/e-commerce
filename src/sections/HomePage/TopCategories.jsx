@@ -169,7 +169,7 @@ const data = [
 export default function TopCategories() {
   return (
     <div className="bg-mainSectionColor">
-      <div className="container mx-auto grid grid-cols-1 gap-x-6 !py-(--section-padding) lg:grid-cols-3">
+      <div className="container mx-auto grid grid-cols-1 gap-y-6 gap-x-6 !py-(--section-padding) lg:grid-cols-3">
         {data.map((category) => (
           <Category key={category.title} {...category} />
         ))}

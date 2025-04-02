@@ -19,6 +19,7 @@
   --color-subtitle: #616161;
 
   --section-padding: 60px;
+  --section-padding-mobile: 24px;
   --section-padding-mobile: 28px;
   --navbar-height-mobile: 80px;
   --navbar-height: 160px;
@@ -100,7 +101,7 @@ input[type="checkbox"] {
   padding: 0 5px !important;
   margin: auto;
   @media (width >= 40rem /* 640px */) {
-    max-width: 40rem /* 640px */;
+    max-width: 44rem /* 640px */;
   }
   @media (width >= 48rem /* 768px */) {
     max-width: 48rem /* 768px */;
@@ -151,3 +152,6 @@ input[type="checkbox"] {
 .filter-sidebar::-webkit-scrollbar {
   width: 8px;
 }
+
+
+

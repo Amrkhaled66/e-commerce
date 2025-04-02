@@ -8,7 +8,7 @@ export default function SliderPoints({
 }) {
   return (
     <div
-      className={`absolute bottom-1 left-1/2 flex -translate-x-1/2 gap-2 lg:bottom-8 ${className}`}
+      className={`absolute bottom-1 sm:bottom-4 left-1/2 flex -translate-x-1/2 gap-2 lg:bottom-8 ${className}`}
     >
       {Array.from({ length }).map((_, index) => (
         <button

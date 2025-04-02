@@ -8,7 +8,7 @@ const QuantitySelector = ({
 }) => {
   return (
     <div
-      className={`flex ${isHorizontal ? "flex-col gap-x-2 gap-y-2 lg:flex-row lg:items-center" : "flex-col"} ${className} `}
+      className={`flex ${isHorizontal ? "flex-col gap-x-2  lg:flex-row lg:items-center" : "gap-y-2 flex-col"} ${className} `}
     >
       <p className="text-xs font-bold lg:text-base">الكمية </p>
 

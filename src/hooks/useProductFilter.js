@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { products } from "src/components/FilterProductPage/data";
+import { products } from "src/components/FilterProductsPage/data.js";
 
 const useProductFilter = () => {
   const itemsPerPage = 4;

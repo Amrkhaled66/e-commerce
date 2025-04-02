@@ -1,11 +1,11 @@
 export default function Header() {
   return (
     <div className="relative">
-      <h4 className="bg-main-color  -translate-y-3 border-white border-4 z-50 absolute -top-3 right-1/2  translate-x-1/2 rounded-full px-6 py-2.5 text-xl font-bold text-white">
+      <h4 className="bg-main-color absolute -top-3 right-1/2 z-50 translate-x-1/2 -translate-y-3 rounded-full border-4 border-white px-6 py-2.5 text-xl font-bold text-white">
         منتجات
       </h4>
       <div
-        className="font-cairo inner-curve relative flex h-[240px] w-full items-center justify-center rounded-[50px] pt-12 text-center text-white"
+        className="font-cairo inner-curve relative flex h-[240px] w-full items-center justify-center rounded-[50px] text-center text-white md:pt-12"
         style={{
           backgroundImage:
             "linear-gradient(88deg, #8CBB26 3.56%, #8CBB26 57.6%, #C4FF45 117.45%)",

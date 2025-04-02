@@ -13,13 +13,12 @@ export default function CustomSlider() {
   const swiperRef = useRef(null);
 
   return (
-    <div className="group relative h-fit !w-screen">
+    <div className="group relative h-fit lg:w-full">
       <Swiper
-        loop
         slidesPerView={2.5}
         autoWidth={true}
-        spaceBetween={20}
         modules={[Navigation]}
+        spaceBetween={16}
         className="relative h-full"
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
@@ -27,14 +26,16 @@ export default function CustomSlider() {
         breakpoints={{
           1024: {
             slidesPerView: 9,
+            spaceBetween: 24,
           },
           744: {
             slidesPerView: 5,
+            spaceBetween: 20,
           },
         }}
       >
         {data.map((slide) => (
-          <SwiperSlide>
+          <SwiperSlide className=" ">
             <CategoryElement title={slide.title} img={slide.img} />
           </SwiperSlide>
         ))}

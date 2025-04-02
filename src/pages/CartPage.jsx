@@ -49,7 +49,7 @@ export default function CartPage() {
             ({products.length}منتج)
           </span>
         </h4>
-        <div className="flex flex-col gap-y-7 gap-x-8 justify-between lg:flex-row">
+        <div className="flex flex-col gap-y-7 gap-x-8  justify-between lg:flex-row">
           <CartInfo cart={products} />
           <CartSummary cartTotal={40000} quantity={products.length} />
         </div>

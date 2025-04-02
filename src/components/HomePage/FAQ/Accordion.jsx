@@ -14,7 +14,7 @@ export default function Accordion() {
     }
   };
   return (
-    <ul className="w-[90%] space-y-4">
+    <ul className="w-[90%] md:space-y-4">
       {data.map((item) => (
         <li key={item.id}>
           <AccordionItem

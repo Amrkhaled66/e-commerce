@@ -19,16 +19,16 @@ const IconElement = ({ color, title, icon }) => {
 export default function Left() {
   return (
     <div className="font-cairo flex flex-col items-center justify-center gap-y-[24px]">
-      <div className="w-full space-y-7 text-center">
+      <div className="w-full space-y-3 md:space-y-7 text-center">
         <h3 className="text-base font-[700] lg:text-[34px]">
           خصم 25% مع عروض لا نهاية لها
         </h3>
-        <p className="text-sm lg:text-xl text-subtitle mx-auto md:w-[60%]  lg:w-[90%] leading-relaxed font-[500]">
+        <p className="text-sm lg:text-xl text-subtitle mx-auto sm:w-[50%] leading-7  lg:w-[90%]  font-[500]">
           اشتري اللي نفسك فية من عالم العروض واستمتع بعرض 25% خصم اضافي علي
           الاكل والترفيه واستمتع اكثر.
         </p>
       </div>
-      <div className="flex w-full md:w-[80%] lg:w-full justify-between">
+      <div className="flex w-full sm:w-[80%] lg:w-full justify-between">
         <IconElement
           color="#FF4646"
           icon={<RiDiscountPercentLine className="h-[30px] w-[40px]" />}

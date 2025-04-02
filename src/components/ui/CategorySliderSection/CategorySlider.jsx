@@ -7,7 +7,7 @@ import ProductCard from "../ProductCard";
 import SliderPoints from "../SliderPoints";
 import SliderArrows from "../SliderArrows";
 
-export default function CategorySlider({ carouselData, slidesPerGroup }) {
+export default function CategorySlider({ carouselData, slidesPerGroup = 4 }) {
   const swiperRef = useRef(null);
   const [activeGroup, setActiveGroup] = useState(0);
 
@@ -29,24 +29,23 @@ export default function CategorySlider({ carouselData, slidesPerGroup }) {
     <div key={carouselData} className="group relative flex h-fit w-full">
       <Swiper
         slidesPerView={slidesPerGroup}
-        loop
+         className=" w-full"
         modules={[Navigation]}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
         onSlideChange={handleSlideChange}
         breakpoints={{
-          320: { slidesPerView: 1.5, slidesPerGroup: 1, spaceBetween: 24 },
-          744: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 24 },
+          320: { slidesPerView: 1.5, spaceBetween: 16 },
+          744: { slidesPerView: 2.7, spaceBetween: 20 },
           1024: {
             slidesPerView: slidesPerGroup,
-            slidesPerGroup: slidesPerGroup,
             spaceBetween: 24,
           },
         }}
       >
         {carouselData.map((slide, index) => (
-          <SwiperSlide className=" " key={index}>
+          <SwiperSlide className="!w-fit   " key={index}>
             <ProductCard {...slide} />
           </SwiperSlide>
         ))}

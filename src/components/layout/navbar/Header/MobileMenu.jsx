@@ -22,10 +22,10 @@ const Item = ({ to, icon: Icon, title }) => {
   );
 };
 
-export default function MobileMenu({ isOpen }) {
+export default function MobileMenu() {
   return (
     <div
-      className={`fixed bottom-0 left-0 flex w-full justify-around border-t border-gray-200 bg-white p-4 shadow-md drop-shadow-lg transition-all duration-200 ${isOpen ? "translate-y-0" : "translate-y-full"} `}
+      className={`fixed bottom-0 left-0 flex w-full justify-around border-t border-gray-200 bg-white p-4 shadow-md drop-shadow-lg transition-all duration-200`}
     >
       <Item to="/" icon={CiHome} title="الرئيسية" />
       <Item to="/search" icon={IoSearchOutline} title="البحث" />

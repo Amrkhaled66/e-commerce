@@ -1,4 +1,4 @@
-import CategoryCarousel from "../../components/ui/CategorySliderSection/index";
+import CategoryCarousel from "src/components/ui/CategorySliderSection/index";
 import sellingSlider from "src/assets/sellingSlider.jpeg";
 
 import img1 from "src/assets/sellingSlider/1.jpeg";

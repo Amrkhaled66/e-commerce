@@ -50,8 +50,8 @@ export default function PannerSlider() {
           1024: {
             slidesPerView: 8,
           },
-          774: {
-            slidesPerView: 3.5,
+          744: {
+            slidesPerView: 4.5,
           },
         }}
       >

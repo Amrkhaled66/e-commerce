@@ -12,10 +12,10 @@ export default function MainSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
-    <div className="relative h-[262px] lg:h-[528px] flex-1 ">
+    <div className="relative flex-1">
       <div
         style={{ backgroundImage: sliderImages[currentIndex] }}
-        className="flex h-full w-full items-center justify-center rounded-[40px] bg-cover bg-center bg-no-repeat py-[140px] transition-all duration-300 lg:justify-start"
+        className="flex h-[262px] sm:h-[400px] w-full items-center justify-center rounded-[40px] bg-cover bg-center bg-no-repeat transition-all duration-300 lg:h-[528px] lg:justify-start"
       >
         <SliderContent />
         <SliderComponents

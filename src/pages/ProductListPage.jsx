@@ -21,7 +21,7 @@ export default function ProductList() {
             <span>ترتيب حسب</span>
           </button>
         </div>
-        <div className="grid grid-cols-3 gap-x-2 gap-y-6 overflow-hidden md:grid-cols-5 md:gap-x-5 lg:gap-x-6 xl:grid-cols-9">
+        <div className="grid grid-cols-3 gap-x-4 gap-y-6 overflow-hidden sm:grid-cols-5 sm:gap-x-5 lg:gap-x-6 xl:grid-cols-9">
           {data.map((category) => (
             <CategoryElement
               key={category.id}
